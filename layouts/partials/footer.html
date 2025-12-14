@@ -1,0 +1,42 @@
+<footer
+    style="
+        background: #222;
+        color: white;
+        padding: 2rem;
+        margin-top: 4rem;
+        text-align: center;
+    "
+>
+    <div style="max-width: 1200px; margin: 0 auto">
+        <!-- Social Links -->
+        <div style="margin-bottom: 1rem">
+            {{ with .Site.Params.social.github }}
+            <a
+                href="https://github.com/{{ . }}"
+                target="_blank"
+                style="color: white; margin: 0 0.5rem">
+                GitHub
+            </a>
+            {{ end }} {{ with .Site.Params.social.twitter }}
+            <a
+                href="https://twitter.com/{{ . }}"
+                target="_blank"
+                style="color: white; margin: 0 0.5rem">
+                Twitter
+            </a>
+            {{ end }} {{ with .Site.Params.social.email }}
+            <a href="mailto:{{ . }}" style="color: white; margin: 0 0.5rem">
+                Email
+            </a>
+            {{ end }}
+        </div>
+
+        <!-- Copyright -->
+        <p style="margin: 0; opacity: 0.8">
+            &copy; {{ now.Year }} {{ .Site.Title }}. Built with
+            <a href="https://gohugo.io" target="_blank" style="color: white">
+                Hugo
+            </a>.
+        </p>
+    </div>
+</footer>

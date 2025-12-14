@@ -1,0 +1,49 @@
+{{ define "main" }}
+<div style="max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;">
+  
+  <!-- Hero Section -->
+  <section style="text-align: center; margin-bottom: 4rem;">
+    <h1 style="font-size: 3rem; margin-bottom: 1rem; color: #333;">
+      Welcome to {{ .Site.Title }}
+    </h1>
+    <p style="font-size: 1.25rem; color: #666; max-width: 600px; margin: 0 auto;">
+      {{ .Site.Params.description }}
+    </p>
+  </section>
+  
+  <!-- Features Section -->
+  <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+    
+    <div style="padding: 2rem; border: 1px solid #ddd; border-radius: 8px;">
+      <h3 style="margin-top: 0; color: #333;">⚡ Fast</h3>
+      <p style="color: #666;">Built with Hugo - the world's fastest static site generator</p>
+    </div>
+    
+    <div style="padding: 2rem; border: 1px solid #ddd; border-radius: 8px;">
+      <h3 style="margin-top: 0; color: #333;">🎨 Modern</h3>
+      <p style="color: #666;">Styled with Tailwind CSS for a beautiful, responsive design</p>
+    </div>
+    
+    <div style="padding: 2rem; border: 1px solid #ddd; border-radius: 8px;">
+      <h3 style="margin-top: 0; color: #333;">🔍 SEO Ready</h3>
+      <p style="color: #666;">Optimized for search engines out of the box</p>
+    </div>
+    
+  </section>
+  
+  <!-- CTA Section -->
+  <section style="text-align: center; padding: 3rem; background: #f5f5f5; border-radius: 8px;">
+    <h2 style="margin-top: 0; color: #333;">Ready to Get Started?</h2>
+    <p style="color: #666; margin-bottom: 2rem;">Explore our blog posts or learn more about us</p>
+    <div style="display: flex; gap: 1rem; justify-content: center;">
+      <a href="/posts/" style="background: #333; color: white; padding: 0.75rem 2rem; text-decoration: none; border-radius: 4px;">
+        View Blog
+      </a>
+      <a href="/about/" style="background: white; color: #333; padding: 0.75rem 2rem; text-decoration: none; border-radius: 4px; border: 2px solid #333;">
+        About Us
+      </a>
+    </div>
+  </section>
+  
+</div>
+{{ end }}
