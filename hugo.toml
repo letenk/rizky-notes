@@ -1,3 +1,70 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+# ===================================
+# BASIC SETTINGS
+# ===================================
+baseURL = 'https://rizkynotes.com/'
+languageCode = 'id-ID'
+title = "Rizky Note's"
+
+# ===================================
+# BUILD SETTINGS
+# ===================================
+[build]
+  writeStats = true
+
+ ===================================
+# MARKUP SETTINGS
+# ===================================
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+  [markup.highlight]
+    style = 'monokai' # ref: https://xyproto.github.io/splash/docs/
+    lineNos = true
+
+# ===================================
+# PARAMS (Custom Parameters)
+# ===================================
+[params]
+  description = 'Website blog pribadi membahas tentang backend engineer'
+  author = 'Rizky Darmawan'
+
+  # Social Media
+  [params.social]
+    instagram = 'https://www.instagram.com/rizky.notes/'
+    github = 'https://github.com/letenk"'
+    linkedin = 'https://www.linkedin.com/in/rizkydarmawan/"'
+
+# ===================================
+# MENU NAVIGATION
+# ===================================
+[menu]
+  [[menu.main]]
+    name = 'Home'
+    url = '/'
+    weight = 1
+
+  [[menu.main]]
+    name = 'Blog'
+    url = '/posts/'
+    weight = 2
+
+  [[menu.main]]
+    name = 'About'
+    url = '/about/'
+    weight = 3
+
+# ===================================
+# OUTPUTS
+# ===================================
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+  section = ['HTML', 'RSS']
+
+# ===================================
+# TAXONOMIES
+# ===================================
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
