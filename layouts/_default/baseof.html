@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}">
+<html lang="{{ .Site.LanguageCode }}" class="scroll-smooth">
 
 <head>
     {{ partial "head.html" . }}
 </head>
 
-<body>
+<body class="min-h-screen flex flex-col">
     {{ partial "header.html" .}}
 
-    <main>
+    <main class="flex-grow">
         {{ block "main" . }}
         
         {{ end }}
