@@ -1,35 +1,30 @@
-<header style="background: #333; color: white; padding: 1rem">
-    <nav
-        style="
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        "
-    >
-        <!-- Logo / Site Title -->
+<header class="bg-gray-800 text-white p-4">
+    <nav class="max-w-7xl mx-auto flex justify-between items-center">
+        <!-- Logo -->
         <div>
             <a
                 href="/"
-                style="
-                    color: white;
-                    text-decoration: none;
-                    font-size: 1.5rem;
-                    font-weight: bold;
-                "
+                class="text-2xl font-bold hover:text-gray-300 transition"
             >
                 {{ .Site.Title }}
             </a>
         </div>
 
         <!-- Navigation Menu -->
-        <div style="display: flex; gap: 2rem">
+        <div class="flex gap-8 items-center">
             {{ range .Site.Menus.main }}
-            <a href="{{ .URL }}" style="color: white; text-decoration: none">
+            <a href="{{ .URL }}" class="hover:text-gray-300 transition">
                 {{ .Name }}
             </a>
             {{ end }}
+
+            <!-- Dark Mode Toggle (Temporary) -->
+            <button
+                onclick="document.documentElement.classList.toggle('dark')"
+                class="px-4 py-2 bg-gray-700 rounded hover:bg-gray-600 transition"
+            >
+                🌙 Toggle
+            </button>
         </div>
     </nav>
 </header>
