@@ -12,6 +12,13 @@
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico" />
 
+<!-- Theme Script (Load FIRST to prevent flash) -->
+{{ $themeJS := resources.Get "js/theme.js" }}
+{{ if $themeJS }}
+  {{ $themeJS = $themeJS | minify }}
+  <script src="{{ $themeJS.Permalink }}" defer></script>
+{{ end }}
+
 <!-- Tailwind CSS -->
 {{ $css := resources.Get "css/main.css" }} {{ $css = $css | css.PostCSS }} {{ if
 hugo.IsProduction }} {{ $css = $css | minify | fingerprint }} {{ end }}
