@@ -4,6 +4,7 @@
 baseURL = 'https://rizkynotes.com/'
 languageCode = 'id-ID'
 title = "Rizky Note's"
+theme = ''
 
 # ===================================
 # BUILD SETTINGS
@@ -29,6 +30,9 @@ title = "Rizky Note's"
 [params]
   description = 'Website blog pribadi membahas tentang backend engineer'
   author = 'Rizky Darmawan'
+
+   # Default OG Image (for homepage & pages without image)
+  image = '/images/og-image.png'
 
   # Social Media
   [params.social]
@@ -63,8 +67,30 @@ title = "Rizky Note's"
   section = ['HTML', 'RSS']
 
 # ===================================
+# SITEMAP CONFIGURATION
+# ===================================
+[sitemap]
+  changefreq = 'weekly'
+  filename = 'sitemap.xml'
+  priority = 0.5
+
+# ===================================
 # TAXONOMIES
 # ===================================
 [taxonomies]
   tag = 'tags'
   category = 'categories'
+
+# ===================================
+# PRIVACY & SECURITY
+# ===================================
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    respectDoNotTrack = true
+
+# ===================================
+# PERMALINKS
+# ===================================
+[permalinks]
+  posts = '/posts/:slug/'

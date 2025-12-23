@@ -10,10 +10,32 @@
 
     <main class="flex-grow">
         {{ block "main" . }}
-        
+
         {{ end }}
     </main>
 
     {{ partial "footer.html" . }}
+
+    <!-- Search Modal -->
+    {{ partial "search-modal.html" . }}
+
+    <!-- Fuse.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+
+    <!-- Search Script -->
+    {{ $searchJS := resources.Get "js/search.js" }}
+    {{ if $searchJS }}
+      {{ $searchJS = $searchJS | minify }}
+      <script src="{{ $searchJS.Permalink }}"></script>
+    {{ else }}
+      <!-- Fallback: Inline search functions if file not found -->
+      <script>
+        window.openSearch = function() {
+          console.error('Search functionality not loaded. Check if assets/js/search.js exists.');
+          alert('Search is not available. Please check console for errors.');
+        };
+        window.closeSearch = function() {};
+      </script>
+    {{ end }}
 </body>
 </html>

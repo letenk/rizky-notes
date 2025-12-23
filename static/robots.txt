@@ -1,0 +1,19 @@
+# Robots.txt for rizkynotes.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://rizkynotes.com/sitemap.xml
+
+# Disallow admin/private paths (if any)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow search engines to index CSS and JS
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Crawl-delay (optional, for aggressive crawlers)
+Crawl-delay: 1

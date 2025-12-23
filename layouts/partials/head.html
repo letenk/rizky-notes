@@ -1,16 +1,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="{{ .Site.Params.description }}" />
-<meta name="author" content="{{ .Site.Params.author }}" />
 
 <!-- Title -->
 <title>
-    {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} |
-    {{.Site.Title}}{{end }}
+    {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{.Site.Title}}{{end }}
 </title>
 
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico" />
+
+<!-- SEO Meta Tags -->
+{{ partial "seo.html" . }}
 
 <!-- Theme Script (Load FIRST to prevent flash) -->
 {{ $themeJS := resources.Get "js/theme.js" }}
@@ -20,6 +20,8 @@
 {{ end }}
 
 <!-- Tailwind CSS -->
-{{ $css := resources.Get "css/main.css" }} {{ $css = $css | css.PostCSS }} {{ if
-hugo.IsProduction }} {{ $css = $css | minify | fingerprint }} {{ end }}
+{{ $css := resources.Get "css/main.css" }} {{ $css = $css | css.PostCSS }}
+{{ if hugo.IsProduction }}
+    {{ $css = $css | minify | fingerprint }}
+{{ end }}
 <link rel="stylesheet" href="{{ $css.Permalink }}" />
