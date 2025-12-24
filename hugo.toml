@@ -94,3 +94,12 @@ theme = ''
 # ===================================
 [permalinks]
   posts = '/posts/:slug/'
+
+[minify]
+  disableHTML = false
+  disableJSON = false
+  disableXML = false
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepQuotes = false
+      keepWhitespace = false
