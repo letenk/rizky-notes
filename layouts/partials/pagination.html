@@ -1,0 +1,58 @@
+{{ $paginator := .Paginator }}
+{{ if gt $paginator.TotalPages 1 }}
+<nav class="flex justify-center" aria-label="Pagination">
+  <ul class="flex items-center gap-2">
+    
+    <!-- Previous -->
+    {{ if $paginator.HasPrev }}
+      <li>
+        <a 
+          href="{{ $paginator.Prev.URL }}" 
+          class="px-4 py-2 bg-white dark:bg-navy-800 border border-gray-300 dark:border-navy-700 rounded-lg text-gray-700 dark:text-gray-300 hover:border-blue-500 transition-all"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </a>
+      </li>
+    {{ end }}
+    
+    <!-- Pages -->
+    {{ $current := $paginator.PageNumber }}
+    {{ $total := $paginator.TotalPages }}
+    
+    {{ range $paginator.Pagers }}
+      {{ $page := .PageNumber }}
+      {{ if or (eq $page 1) (eq $page $total) (and (ge $page (sub $current 1)) (le $page (add $current 1))) }}
+        <li>
+          <a 
+            href="{{ .URL }}"
+            class="px-4 py-2 rounded-lg border transition-all {{ if eq $page $current }}bg-blue-600 text-white border-blue-600{{ else }}bg-white dark:bg-navy-800 border-gray-300 dark:border-navy-700 text-gray-700 dark:text-gray-300 hover:border-blue-500{{ end }}"
+          >
+            {{ $page }}
+          </a>
+        </li>
+      {{ else if and (eq $page 2) (gt $current 3) }}
+        <li class="px-2 text-gray-400">...</li>
+      {{ else if and (eq $page (sub $total 1)) (lt $current (sub $total 2)) }}
+        <li class="px-2 text-gray-400">...</li>
+      {{ end }}
+    {{ end }}
+    
+    <!-- Next -->
+    {{ if $paginator.HasNext }}
+      <li>
+        <a 
+          href="{{ $paginator.Next.URL }}" 
+          class="px-4 py-2 bg-white dark:bg-navy-800 border border-gray-300 dark:border-navy-700 rounded-lg text-gray-700 dark:text-gray-300 hover:border-blue-500 transition-all"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </li>
+    {{ end }}
+    
+  </ul>
+</nav>
+{{ end }}

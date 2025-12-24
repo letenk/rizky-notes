@@ -1,0 +1,36 @@
+{{ define "main" }}
+<div class="bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-navy-900 dark:via-navy-800 dark:to-navy-900 min-h-screen py-12 transition-colors duration-300">
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Page Header -->
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        All Tags
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400">
+        Browse articles by tag
+      </p>
+    </header>
+    
+    <!-- Tags Cloud -->
+    <div class="flex flex-wrap gap-4 justify-center">
+      {{ range .Data.Terms.ByCount }}
+        <a 
+          href="{{ .Page.Permalink }}"
+          class="group inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-navy-800 border border-gray-200 dark:border-navy-700 rounded-full hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-lg transition-all duration-200 hover:-translate-y-1"
+        >
+          <span class="text-gray-900 dark:text-white font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            #{{ .Page.Title }}
+          </span>
+          <span class="px-2 py-1 text-xs bg-gray-100 dark:bg-navy-700 text-gray-600 dark:text-gray-400 rounded-full">
+            {{ .Count }}
+          </span>
+        </a>
+      {{ end }}
+    </div>
+    
+  </div>
+  
+</div>
+{{ end }}

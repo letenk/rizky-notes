@@ -1,0 +1,207 @@
+{{ define "main" }}
+<div class="bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-navy-900 dark:via-navy-800 dark:to-navy-900 min-h-screen py-12 transition-colors duration-300">
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Page Header -->
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        {{ .Title }}
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+        {{ if .Description }}
+          {{ .Description }}
+        {{ else }}
+          Explore our collection of {{ len .Pages }} articles
+        {{ end }}
+      </p>
+      
+      <!-- Search Button -->
+      <div class="mt-8">
+        <button 
+          onclick="window.openSearch()"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-navy-800 border border-gray-300 dark:border-navy-700 rounded-full text-gray-700 dark:text-gray-300 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-200 group"
+        >
+          <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <span>Search articles</span>
+          <kbd class="hidden sm:inline-block px-2 py-1 text-xs font-mono bg-gray-100 dark:bg-navy-700 border border-gray-300 dark:border-navy-600 rounded">Ctrl+K</kbd>
+        </button>
+      </div>
+    </header>
+    
+    <!-- Articles Grid -->
+    {{ $paginator := .Paginate .Pages 9 }}
+    
+    {{ if gt (len $paginator.Pages) 0 }}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      
+      {{ range $paginator.Pages }}
+      <article class="group bg-white dark:bg-navy-800 rounded-2xl overflow-hidden border border-gray-200 dark:border-navy-700 hover:border-blue-500 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2">
+        
+        <!-- Card Image / Gradient Placeholder -->
+        {{ if .Params.image }}
+          <a href="{{ .Permalink }}" class="block">
+            <img 
+              src="{{ .Params.image }}" 
+              alt="{{ .Title }}"
+              loading="lazy"
+              class="aspect-video w-full object-cover"
+            >
+          </a>
+        {{ else }}
+          <a href="{{ .Permalink }}" class="block aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all duration-300"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg class="w-16 h-16 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+          </a>
+        {{ end }}
+        
+        <!-- Card Content -->
+        <div class="p-6">
+          
+          <!-- Category/Tags -->
+          <div class="mb-3 flex flex-wrap gap-2">
+            {{ with .Params.categories }}
+              {{ range first 1 . }}
+                <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                  {{ . }}
+                </span>
+              {{ end }}
+            {{ end }}
+            {{ with .Params.tags }}
+              {{ range first 2 . }}
+                <span class="inline-block px-2 py-1 text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-navy-700 rounded">
+                  #{{ . }}
+                </span>
+              {{ end }}
+            {{ end }}
+          </div>
+          
+          <!-- Title -->
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+            <a href="{{ .Permalink }}" class="line-clamp-2">
+              {{ .Title }}
+            </a>
+          </h2>
+          
+          <!-- Description/Summary -->
+          <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 text-sm">
+            {{ if .Description }}
+              {{ .Description }}
+            {{ else }}
+              {{ .Summary }}
+            {{ end }}
+          </p>
+          
+          <!-- Meta Info -->
+          <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-500">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-xs font-bold">
+                {{ substr (.Params.author | default .Site.Params.author) 0 1 }}
+              </div>
+              <span class="truncate max-w-[100px]">{{ .Params.author | default .Site.Params.author }}</span>
+            </div>
+            <time datetime="{{ .Date.Format "2006-01-02" }}" class="flex-shrink-0">
+              {{ .Date.Format "Jan 2" }}
+            </time>
+          </div>
+          
+          <!-- Read More Link -->
+          <a href="{{ .Permalink }}" class="mt-4 inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm transition-colors group/link">
+            Read more
+            <svg class="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+          
+        </div>
+        
+      </article>
+      {{ end }}
+      
+    </div>
+    
+    <!-- Pagination -->
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="flex justify-center" aria-label="Pagination">
+      <ul class="flex items-center gap-2">
+        
+        <!-- Previous Button -->
+        {{ if $paginator.HasPrev }}
+          <li>
+            <a 
+              href="{{ $paginator.Prev.URL }}" 
+              class="px-4 py-2 bg-white dark:bg-navy-800 border border-gray-300 dark:border-navy-700 rounded-lg text-gray-700 dark:text-gray-300 hover:border-blue-500 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
+              aria-label="Previous page"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </a>
+          </li>
+        {{ end }}
+        
+        <!-- Page Numbers -->
+        {{ $current := $paginator.PageNumber }}
+        {{ $total := $paginator.TotalPages }}
+        
+        {{ range $paginator.Pagers }}
+          {{ $page := .PageNumber }}
+          
+          <!-- Show first page, last page, current page, and pages around current -->
+          {{ if or (eq $page 1) (eq $page $total) (and (ge $page (sub $current 1)) (le $page (add $current 1))) }}
+            <li>
+              <a 
+                href="{{ .URL }}"
+                class="px-4 py-2 rounded-lg border transition-all duration-200 {{ if eq $page $current }}bg-blue-600 text-white border-blue-600{{ else }}bg-white dark:bg-navy-800 border-gray-300 dark:border-navy-700 text-gray-700 dark:text-gray-300 hover:border-blue-500 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400{{ end }}"
+                {{ if eq $page $current }}aria-current="page"{{ end }}
+              >
+                {{ $page }}
+              </a>
+            </li>
+          {{ else if and (eq $page 2) (gt $current 3) }}
+            <li class="px-2 text-gray-400 dark:text-gray-600">...</li>
+          {{ else if and (eq $page (sub $total 1)) (lt $current (sub $total 2)) }}
+            <li class="px-2 text-gray-400 dark:text-gray-600">...</li>
+          {{ end }}
+        {{ end }}
+        
+        <!-- Next Button -->
+        {{ if $paginator.HasNext }}
+          <li>
+            <a 
+              href="{{ $paginator.Next.URL }}" 
+              class="px-4 py-2 bg-white dark:bg-navy-800 border border-gray-300 dark:border-navy-700 rounded-lg text-gray-700 dark:text-gray-300 hover:border-blue-500 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200"
+              aria-label="Next page"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </li>
+        {{ end }}
+        
+      </ul>
+    </nav>
+    {{ end }}
+    
+    {{ else }}
+    <!-- No Posts -->
+    <div class="text-center py-16">
+      <svg class="w-24 h-24 mx-auto mb-6 text-gray-300 dark:text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+      </svg>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">No posts yet</h2>
+      <p class="text-gray-600 dark:text-gray-400">Check back soon for new content!</p>
+    </div>
+    {{ end }}
+    
+  </div>
+  
+</div>
+{{ end }}

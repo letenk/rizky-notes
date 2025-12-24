@@ -1,0 +1,51 @@
+{{ define "main" }}
+<div class="bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-navy-900 dark:via-navy-800 dark:to-navy-900 min-h-screen py-12 transition-colors duration-300">
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Page Header -->
+    <header class="mb-12 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full mb-4">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+        </svg>
+        <span class="font-semibold">Category</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        #{{ .Title }}
+      </h1>
+
+      <p class="text-xl text-gray-600 dark:text-gray-400">
+        {{ len .Pages }} {{ if eq (len .Pages) 1 }}article{{ else }}articles{{ end }} tagged with "{{ .Title }}"
+      </p>
+
+      <!-- All Category Link -->
+      <div class="mt-6">
+        <a href="/categories/" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+          View all categories
+        </a>
+      </div>
+    </header>
+
+    <!-- Articles -->
+    {{ $paginator := .Paginate .Pages 9 }}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      {{ range $paginator.Pages }}
+        {{ partial "article-card.html" . }}
+      {{ end }}
+    </div>
+
+    <!-- Pagination -->
+    {{ if gt $paginator.TotalPages 1 }}
+      {{ partial "pagination.html" . }}
+    {{ end }}
+
+  </div>
+
+</div>
+{{ end }}
