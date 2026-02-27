@@ -28,7 +28,7 @@ theme = ''
 # PARAMS (Custom Parameters)
 # ===================================
 [params]
-  description = 'Website blog pribadi membahas tentang backend engineer'
+  description = 'Rizky Note’s adalah tempat saya menuliskan catatan pribadi seputar Software Engineering, terutama tentang Backend Engineering. Ditulis untuk diri sendiri, dibagikan untuk siapa saja.'
   author = 'Rizky Darmawan'
 
    # Default OG Image (for homepage & pages without image)

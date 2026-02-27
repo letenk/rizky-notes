@@ -78,7 +78,19 @@
       {{ end }}
       
     </header>
-    
+
+    <!-- Cover Image -->
+    {{ $img := or .Params.image .Params.cover.image }}
+    {{ with $img }}
+      <div class="mb-12">
+        <img
+          src="{{ . }}"
+          alt="{{ $.Title }}"
+          class="w-full rounded-2xl shadow-lg object-cover"
+        >
+      </div>
+    {{ end }}
+
     <!-- Article Content -->
     <div class="prose prose-lg dark:prose-invert max-w-none
                 prose-headings:text-gray-900 dark:prose-headings:text-white
