@@ -22,7 +22,7 @@ theme = ''
 
   [markup.highlight]
     style = 'monokai' # ref: https://xyproto.github.io/splash/docs/
-    lineNos = true
+    lineNos = false
 
 # ===================================
 # PARAMS (Custom Parameters)
