@@ -1,5 +1,5 @@
 {{- $gaId := os.Getenv "GOOGLE_ANALYTICS_ID" -}}
-{{- if and $gaId (not $.Site.IsServer) -}}
+{{- if and $gaId (not hugo.IsServer) -}}
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ $gaId }}"></script>
 <script>
