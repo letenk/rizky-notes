@@ -1,33 +1,25 @@
 ---
-title: "About Rizky Notes"
+title: "About"
+description: "Backend & Data Engineer dengan 4+ tahun pengalaman membangun sistem yang scalable menggunakan Golang dan Laravel."
 date: 2025-12-21T10:00:00+07:00
 draft: false
-description: "Learn more about Rizky Notes - a platform dedicated to sharing web development tutorials, tips, and best practices."
+layout: "about"
+profile_image: "/images/profile.png"
+tech_stack:
+  - category: "Backend"
+    skills: ["Go / Golang", "PHP (Laravel)", "REST API", "Microservices", "WebSocket"]
+  - category: "Database & Cache"
+    skills: ["MySQL", "PostgreSQL", "MariaDB", "Redis", "Query Optimization"]
+  - category: "Cloud & Infrastructure"
+    skills: ["AWS (EC2, RDS, S3)", "Docker", "CI/CD (GitHub Actions)", "Linux (Ubuntu)"]
+  - category: "Messaging & Async"
+    skills: ["RabbitMQ", "Event-Driven Architecture", "Background Jobs"]
+  - category: "Monitoring & Observability"
+    skills: ["Grafana", "Loki", "New Relic", "AWS CloudWatch"]
+  - category: "Testing"
+    skills: ["Unit Testing", "Integration Testing"]
 ---
 
-# About Rizky Notes
+Saya seorang Backend & Data Engineer dengan 4+ tahun pengalaman membangun sistem yang scalable menggunakan Golang dan Laravel. Berpengalaman dalam merancang sistem real-time, mengotomasi pipeline CI/CD, dan mengelola infrastruktur cloud.
 
-Welcome to **Rizky Notes**! This is a platform where I share my knowledge and experience in web development.
-
-## What You'll Find Here
-
-- **Hugo Tutorials**: Learn how to build fast static websites with Hugo
-- **Tailwind CSS Tips**: Master utility-first CSS framework
-- **JavaScript Guides**: Modern JavaScript techniques and best practices
-- **Web Performance**: Optimize your websites for speed and efficiency
-
-## About the Author
-
-I'm a passionate web developer who loves building fast, beautiful, and accessible websites. I believe in sharing knowledge and helping others grow in their development journey.
-
-## Get in Touch
-
-Feel free to reach out if you have questions or suggestions!
-
-- **Email**: your@email.com
-- **GitHub**: github.com/yourusername
-- **Twitter**: @yourusername
-
----
-
-*Built with Hugo and Tailwind CSS*
+Fokus pada performa, skalabilitas, dan solusi siap produksi. Blog ini adalah tempat saya mendokumentasikan hal-hal yang saya pelajari — ditulis untuk diri sendiri, dibagikan untuk siapa saja.
