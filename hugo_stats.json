@@ -160,6 +160,7 @@
       "h-6",
       "h-64",
       "h-7",
+      "h-8",
       "hidden",
       "highlight",
       "hover:-translate-y-1",
@@ -220,7 +221,6 @@
       "md:hidden",
       "min-h-screen",
       "mr-2",
-      "mr-4",
       "mt-12",
       "mt-16",
       "mt-2",
@@ -339,6 +339,7 @@
       "w-6",
       "w-64",
       "w-7",
+      "w-8",
       "w-full",
       "z-50",
       "z-[100]"

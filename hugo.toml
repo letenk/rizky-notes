@@ -37,8 +37,8 @@ theme = ''
   # Social Media
   [params.social]
     instagram = 'https://www.instagram.com/rizky.notes/'
-    github = 'https://github.com/letenk"'
-    linkedin = 'https://www.linkedin.com/in/rizkydarmawan/"'
+    github = 'https://github.com/letenk'
+    linkedin = 'https://www.linkedin.com/in/rizkydarmawan/'
 
 # ===================================
 # MENU NAVIGATION
@@ -88,6 +88,13 @@ theme = ''
   [privacy.googleAnalytics]
     anonymizeIP = true
     respectDoNotTrack = true
+
+# ===================================
+# SECURITY
+# ===================================
+[security]
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$', '^GOOGLE_ANALYTICS_ID$']
 
 # ===================================
 # PERMALINKS
