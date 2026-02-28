@@ -39,6 +39,13 @@ title = "Rizky Note's"
     github = 'https://github.com/letenk'
     linkedin = 'https://www.linkedin.com/in/rizkydarmawan/'
 
+  # Comments - Giscus
+  [params.giscus]
+    repo       = "letenk/rizky-notes"
+    repoId     = "R_kgDOQobt5g"
+    category   = "Announcements"
+    categoryId = "DIC_kwDOQobt5s4C0Py1"
+
 # ===================================
 # MENU NAVIGATION
 # ===================================
