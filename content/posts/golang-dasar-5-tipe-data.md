@@ -1,5 +1,6 @@
 ---
 title: "Golang Dasar #5 - Tipe Data"
+slug: "golang-dasar-5-tipe-data"
 date: 2022-11-14T10:47:40+07:00
 tags: ["go", "golang", "golang-dasar"]
 cover:

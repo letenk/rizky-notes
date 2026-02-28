@@ -1,5 +1,6 @@
 ---
 title: "Golang Dasar #6 - Constant"
+slug: "golang-dasar-6-constant"
 date: 2022-11-21T09:06:24+07:00
 tags: ["go", "golang", "golang-dasar"]
 cover:
