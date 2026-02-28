@@ -4,7 +4,6 @@
 baseURL = 'https://rizkynotes.com/'
 languageCode = 'id-ID'
 title = "Rizky Note's"
-theme = ''
 
 # ===================================
 # BUILD SETTINGS
