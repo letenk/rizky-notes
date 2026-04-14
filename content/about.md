@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "Backend & Data Engineer dengan 4+ tahun pengalaman membangun sistem yang scalable menggunakan Golang dan Laravel."
+description: "Backend Engineer with 4+ years of experience building scalable systems using Golang and Laravel."
 date: 2025-12-21T10:00:00+07:00
 draft: false
 layout: "about"
@@ -20,6 +20,6 @@ tech_stack:
     skills: ["Unit Testing", "Integration Testing"]
 ---
 
-Saya seorang Backend & Data Engineer dengan 4+ tahun pengalaman membangun sistem yang scalable menggunakan Golang dan Laravel. Berpengalaman dalam merancang sistem real-time, mengotomasi pipeline CI/CD, dan mengelola infrastruktur cloud.
+I'm a Backend Engineer with 4+ years of experience building scalable systems using Golang and Laravel. I specialize in designing real-time systems, automating CI/CD pipelines, and managing cloud infrastructure.
 
-Fokus pada performa, skalabilitas, dan solusi siap produksi. Blog ini adalah tempat saya mendokumentasikan hal-hal yang saya pelajari — ditulis untuk diri sendiri, dibagikan untuk siapa saja.
+Focused on performance, scalability, and production-ready solutions. This blog is where I document things I learn — written for myself, shared for anyone.
