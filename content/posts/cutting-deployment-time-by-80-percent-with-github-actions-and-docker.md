@@ -24,7 +24,7 @@ Beanstalk sebelumnya sangat nyaman, semua proses deployment otomatis. Push kode,
 
 ## Masalah: Deployment Manual yang Makan Waktu
 
-Di setup awal Lightsail, setiap kali saya ingin deploy perubahan ke production, inilah ritual yang harus saya jalani:
+Di setup awal Lightsail, setiap kali saya ingin deploy perubahan ke server, inilah ritual yang harus saya jalani:
 
 1. Push commit ke GitHub
 2. Buat tag release (`git tag -a v1.2.3 -m "release note" && git push origin v1.2.3`)
@@ -33,7 +33,7 @@ Di setup awal Lightsail, setiap kali saya ingin deploy perubahan ke production, 
 5. Jalankan `docker compose up -d --build`
 6. Kalau ada perubahan database, masuk ke container dengan `docker exec` lalu jalankan `php artisan migrate --force` secara manual
 
-Semua langkah di atas memakan waktu sekitar **2-3 menit**. Belum lagi kalau lagi buru-buru karena ada bug kritis di production, setiap detiknya terasa lambat.
+Semua langkah di atas memakan waktu sekitar **2-3 menit**. Belum lagi kalau lagi buru-buru karena ada bug kritis di server yang butuh cepat di beresin, setiap detiknya terasa lambat.
 
 Nah, yang paling mengganggu sebenarnya bukan durasinya, tapi **banyaknya langkah manual** yang rawan human error. Pernah suatu kali saya lupa menjalankan migrasi setelah deploy, dan langsung mendapatkan error karena kolom baru di database belum ada. Cukup memalukan akibat terburu-buru dan step yang terlalu banyak.
 
