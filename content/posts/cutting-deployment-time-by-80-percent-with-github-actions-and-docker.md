@@ -16,13 +16,13 @@ ShowToc: true
 ##### Photo by <a href="https://unsplash.com/@bruno_kelzer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Bruno Kelzer</a> on <a href="https://unsplash.com/photos/person-holding-green-and-gray-leaf-UZuNn5yjHpc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 
-Beberapa waktu lalu saya sedang mengerjakan project untuk seorang client. Sehari-hari saya adalah backend engineer, tapi di project ini ternyata scope-nya meluas — saya harus masuk ke ranah server juga. Client ingin memigrasikan aplikasi Laravel mereka dari **AWS Elastic Beanstalk** ke **AWS Lightsail**, dengan alasan ingin menekan biaya infrastruktur bulanan dan punya kontrol lebih penuh atas server.
+Beberapa waktu lalu saya sedang mengerjakan project untuk seorang client. Sehari-hari saya adalah backend engineer, tapi di project ini ternyata scope-nya meluas. Saya harus masuk ke ranah server juga. Client ingin memigrasikan aplikasi Laravel mereka dari **AWS Elastic Beanstalk** ke **AWS Lightsail**, dengan alasan ingin menekan biaya infrastruktur bulanan dan punya kontrol lebih penuh atas server.
 
 Sebagai orang yang suka belajar, ini justru momen yang menarik. Selama ini saya nyaman di zona backend, sekarang kesempatan buat pegang hal-hal infrastruktur dan DevOps secara langsung.
 
-Beanstalk sebelumnya sangat nyaman — semua proses deployment otomatis. Push kode, selesai. Tapi begitu pindah ke Lightsail, semuanya berubah. Tiba-tiba saya harus setup server dari nol, konfigurasi Docker, dan yang paling menyebalkan: **proses deployment yang serba manual**.
+Beanstalk sebelumnya sangat nyaman, semua proses deployment otomatis. Push kode, selesai. Tapi begitu pindah ke Lightsail, semuanya berubah. Tiba-tiba saya harus setup server dari nol, konfigurasi Docker, dan yang paling menyebalkan: **proses deployment yang serba manual**.
 
-## 🔍 Masalah: Deployment Manual yang Makan Waktu
+## Masalah: Deployment Manual yang Makan Waktu
 
 Di setup awal Lightsail, setiap kali saya ingin deploy perubahan ke production, inilah ritual yang harus saya jalani:
 
@@ -33,13 +33,13 @@ Di setup awal Lightsail, setiap kali saya ingin deploy perubahan ke production, 
 5. Jalankan `docker compose up -d --build`
 6. Kalau ada perubahan database, masuk ke container dengan `docker exec` lalu jalankan `php artisan migrate --force` secara manual
 
-Semua langkah di atas memakan waktu sekitar **2-3 menit**. Belum lagi kalau lagi buru-buru karena ada bug kritis di production — setiap detiknya terasa lambat.
+Semua langkah di atas memakan waktu sekitar **2-3 menit**. Belum lagi kalau lagi buru-buru karena ada bug kritis di production, setiap detiknya terasa lambat.
 
 Nah, yang paling mengganggu sebenarnya bukan durasinya, tapi **banyaknya langkah manual** yang rawan human error. Pernah suatu kali saya lupa menjalankan migrasi setelah deploy, dan langsung mendapatkan error karena kolom baru di database belum ada. Cukup memalukan akibat terburu-buru dan step yang terlalu banyak.
 
 Jadi muncul pertanyaan: kenapa tidak saya otomatisasi saja semua ini? Sewaktu masih bekerja di startup dulu, tim infra sudah pernah menyiapkan pipeline seperti ini. Gimana kalau saya coba cari tahu dan bangun sendiri?
 
-## 🎯 Solusi: GitHub Actions Workflow
+## Solusi: GitHub Actions Workflow
 
 Karena kode sudah ada di GitHub dan server sudah pakai Docker, jawabannya cukup jelas: **GitHub Actions**. Dengan `workflow_dispatch`, kita bisa membuat workflow yang dipicu secara manual dari tab Actions di GitHub — lengkap dengan input parameter.
 
@@ -47,8 +47,8 @@ Mungkin kamu bertanya, kenapa tidak otomatis saja ketika ada commit atau merge k
 
 Nah, di sinilah pertimbangannya. Dengan trigger manual, ada beberapa keuntungan:
 
-1. **Tidak ada perubahan mendadak di production** — setiap deployment harus disengaja, bukan efek samping dari merge
-2. **Semua orang di tim jadi aware** — sebelum deploy, orang yang bersangkutan harus masuk ke tab Actions dan menjalankannya secara sadar
+1. **Tidak ada perubahan mendadak di production**. Setiap deployment harus disengaja, bukan efek samping dari merge
+2. **Semua orang di tim jadi aware** karena sebelum deploy, orang yang bersangkutan harus masuk ke tab Actions dan menjalankannya secara sadar
 3. **Versioning wajib** — dengan input tag, kita diharuskan membuat versi untuk setiap deployment. Kalau ke depannya terjadi error atau hal yang tidak diinginkan, kita bisa langsung rollback ke tag sebelumnya
 
 Oke, jadi konsepnya sederhana:
@@ -66,7 +66,7 @@ Tidak perlu SSH, tidak perlu `docker exec`, tidak perlu takut lupa migrasi. Depl
 
 Mari kita lihat bagaimana workflow ini dibangun.
 
-## ⚙️ Membangun Workflow
+## Membangun Workflow
 
 Workflow kita simpan di `.github/workflows/deploy.yml`. Berikut struktur dasarnya:
 
@@ -89,8 +89,8 @@ on:
 
 Dengan konfigurasi `workflow_dispatch` di atas, GitHub akan menampilkan form sederhana setiap kali kita ingin menjalankan workflow. Ada dua input:
 
-1. **tag** — tag Git yang ingin di-deploy, wajib diisi
-2. **run_migration** — checkbox untuk menjalankan migrasi database, opsional
+1. **tag**, yaitu tag Git yang ingin di-deploy, wajib diisi
+2. **run_migration**, yaitu checkbox untuk menjalankan migrasi database, opsional
 
 Cukup jelas ya. Sekarang kita masuk ke bagian `jobs`.
 
@@ -181,11 +181,11 @@ Bagian terakhir adalah opsi untuk menjalankan migrasi database:
             fi
 ```
 
-Cukup straightforward — cek apakah input `run_migration` bernilai `true`. Jika ya, jalankan `php artisan migrate --force` di dalam container `container_app`. Flag `--force` diperlukan karena artisan biasanya meminta konfirmasi di environment production.
+Cukup straightforward. Cek apakah input `run_migration` bernilai `true`. Jika ya, jalankan `php artisan migrate --force` di dalam container `container_app`. Flag `--force` diperlukan karena artisan biasanya meminta konfirmasi di environment production.
 
 Bagian ini yang dulu paling menyebalkan. Sering kali setelah `docker compose up -d` selesai, saya harus buru-buru `docker exec` untuk menjalankan migrasi sebelum ada request masuk yang menyentuh tabel baru. Sekarang tinggal centang kotak, beres.
 
-## 🚀 Hasil Akhir
+## Hasil Akhir
 
 Yay 🎉, workflow sudah siap. Sekarang setiap kali ingin deploy, prosesnya sesederhana:
 
@@ -207,7 +207,7 @@ Berikut perbandingan sebelum dan sesudah:
 
 Dari **2-3 menit** ke **~40 detik**, itu artinya **waktu deployment berkurang sekitar 80%**. Tapi yang lebih penting dari pengurangan waktu adalah: deployment sekarang **konsisten** dan **bebas dari human error**.
 
-## 📋 Kesimpulan
+## Kesimpulan
 
 Migrasi dari Beanstalk ke Lightsail memang memaksa saya keluar dari zona nyaman backend engineer dan menyentuh hal-hal infrastruktur yang sebelumnya sudah ditangani otomatis — termasuk deployment. Tapi dari situlah kita belajar dan berkembang.
 
