@@ -4,7 +4,7 @@ date: 2026-07-22T09:00:00+07:00
 tags: ["go", "golang", "tips", "design pattern"]
 cover:
   image: "/images/registry-pattern-dan-dispatcher-pattern-cara-elegan-mengelola-banyak-provider/cover.webp"
-draft: false
+draft: true
 ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true
