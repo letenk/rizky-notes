@@ -10,9 +10,6 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowToc: true
 ---
-
-> **English Version**: *For English version of this article, please visit: [dev.to](https://dev.to/letenk/cutting-deployment-time-by-80-with-github-actions-and-docker-1mdi)*
-
 ##### Photo by <a href="https://unsplash.com/@bruno_kelzer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Bruno Kelzer</a> on <a href="https://unsplash.com/photos/person-holding-green-and-gray-leaf-UZuNn5yjHpc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 

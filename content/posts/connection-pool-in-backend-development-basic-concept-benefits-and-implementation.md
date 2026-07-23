@@ -10,9 +10,6 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowToc: true
 ---
-
-> **English Version**: *For English version of this article, please visit: [dev.to](https://dev.to/tentanganak/connection-pool-in-backend-development-basic-concept-benefits-and-implementation-4bh0)*
-
 ##### Photo by <a href="https://unsplash.com/@buying_thyme?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Christine Tutunjian</a> on <a href="https://unsplash.com/photos/assorted-color-balloons-7oLuQ0ZEQ9A?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
 Connection Pooling adalah mekanisme yang menciptakan dan mengelola kumpulan koneksi database yang dapat digunakan oleh aplikasi. Konsep ini penting dalam mengelola koneksi ke database dengan tujuan mengoptimalkan penggunaan sumber daya dan meningkatkan performa aplikasi yang sering berinteraksi dengan database.

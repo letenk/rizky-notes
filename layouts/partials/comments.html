@@ -1,6 +1,6 @@
 {{ if .Site.Params.giscus.repoId }}
 <div class="mt-12 pt-8 border-t border-gray-200 dark:border-navy-700">
-  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Komentar</h3>
+  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">{{ i18n "comments" }}</h3>
   <div class="giscus"></div>
 </div>
 
@@ -23,7 +23,7 @@
   script.setAttribute('data-emit-metadata',     '0');
   script.setAttribute('data-input-position',    'bottom');
   script.setAttribute('data-theme',             giscusTheme);
-  script.setAttribute('data-lang',              'id');
+  script.setAttribute('data-lang',              '{{ .Site.Language.Lang }}');
   script.setAttribute('crossorigin',            'anonymous');
   script.async = true;
   document.querySelector('.giscus').appendChild(script);

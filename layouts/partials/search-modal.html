@@ -1,5 +1,9 @@
 <!-- Search Modal -->
-<div id="search-modal" class="hidden fixed inset-0 z-[100] overflow-y-auto">
+<div id="search-modal" class="hidden fixed inset-0 z-[100] overflow-y-auto"
+  data-index-url="{{ "index.json" | relLangURL }}"
+  data-locale="{{ .Site.Language.LanguageCode }}"
+  data-no-results="{{ i18n "search_no_results" }}"
+  data-try-different="{{ i18n "search_try_different" }}">
   <!-- Backdrop -->
   <div class="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
   
@@ -19,7 +23,7 @@
           <input 
             id="search-input"
             type="text" 
-            placeholder="Search articles... (Ctrl+K)" 
+            placeholder="{{ i18n "search_placeholder_full" }}"
             class="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none text-lg"
             autocomplete="off"
           >
@@ -28,7 +32,7 @@
           <button 
             onclick="window.closeSearch()"
             class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-navy-700 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
-            aria-label="Close search"
+            aria-label="{{ i18n "close_search" }}"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -44,8 +48,8 @@
           <svg class="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
-          <p class="text-lg font-medium">Start typing to search</p>
-          <p class="text-sm mt-2">Try keywords like "hugo", "tailwind", or "dark mode"</p>
+          <p class="text-lg font-medium">{{ i18n "search_start_typing" }}</p>
+          <p class="text-sm mt-2">{{ i18n "search_hint" }}</p>
         </div>
       </div>
       
@@ -55,11 +59,11 @@
           <span class="flex items-center gap-1">
             <kbd class="px-2 py-1 bg-white dark:bg-navy-800 border border-gray-300 dark:border-navy-600 rounded text-xs font-mono">↑</kbd>
             <kbd class="px-2 py-1 bg-white dark:bg-navy-800 border border-gray-300 dark:border-navy-600 rounded text-xs font-mono">↓</kbd>
-            <span>to navigate</span>
+            <span>{{ i18n "to_navigate" }}</span>
           </span>
           <span class="flex items-center gap-1">
             <kbd class="px-2 py-1 bg-white dark:bg-navy-800 border border-gray-300 dark:border-navy-600 rounded text-xs font-mono">ESC</kbd>
-            <span>to close</span>
+            <span>{{ i18n "to_close" }}</span>
           </span>
         </div>
         <span>Powered by Fuse.js</span>

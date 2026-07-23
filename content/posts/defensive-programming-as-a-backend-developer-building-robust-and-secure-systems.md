@@ -10,9 +10,6 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowToc: true
 ---
-
-> **English Version**: *For English version of this article, please visit: [dev.to](https://dev.to/tentanganak/defensive-programming-as-a-backend-developer-building-robust-and-secure-systems-50kk)*
-
 Dalam pengembangan aplikasi backend, memastikan keamanan dan stabilitas aplikasi adalah suatu keharusan mutlak. Backend adalah tulang punggung dari aplikasi, yang bertanggung jawab untuk menangani logika bisnis, menyimpan data, dan berinteraksi dengan sistem eksternal. Menulis kode yang kuat dan andal sangat penting untuk semua pengembang perangkat lunak. Namun, tidak peduli seberapa hati-hati kita, bug dan situasi yang tidak terduga masih bisa terjadi. Di sinilah Defensive programming berperan.
 
 Defensive programming adalah praktik coding yang bertujuan untuk memastikan bahwa perangkat lunak berfungsi dengan benar bahkan ketika peristiwa tak terduga atau input tidak valid terjadi. Untuk seorang backend developer, defensive programming adalah pendekatan penting, yang memungkinkan kita merancang aplikasi yang dapat bertahan dari input buruk, error sistem, dan serangan eksternal.

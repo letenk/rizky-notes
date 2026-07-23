@@ -12,6 +12,24 @@
 <!-- SEO Meta Tags -->
 {{ partial "seo.html" . }}
 
+<!-- hreflang alternates (tell search engines about translated pages) -->
+{{ if .IsTranslated }}
+  {{ $defaultLang := (index .Sites 0).Language.Lang }}
+  {{ range .AllTranslations }}
+    <link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}" />
+  {{ end }}
+  {{ range .AllTranslations }}{{ if eq .Language.Lang $defaultLang }}
+    <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+  {{ end }}{{ end }}
+{{ end }}
+
+<!-- RSS / feed autodiscovery -->
+{{ range .AlternativeOutputFormats }}
+  {{ if eq .Rel "alternate" }}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}" />
+  {{ end }}
+{{ end }}
+
 <!-- Theme Script (Load FIRST to prevent flash) -->
 {{ $themeJS := resources.Get "js/theme.js" }}
 {{ if $themeJS }}

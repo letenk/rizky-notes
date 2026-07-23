@@ -1,0 +1,201 @@
+# =====================================================
+# Bahasa Indonesia UI strings — rizkynotes.com
+# =====================================================
+
+# --- Homepage ---
+[hero_greeting]
+other = "Halo, saya"
+
+[latest_articles]
+other = "Artikel Terbaru"
+
+[view_all]
+other = "Lihat Semua"
+
+[cta_title]
+other = "Siap Belajar Lebih Lanjut?"
+
+[cta_subtitle]
+other = "Jelajahi kumpulan tutorial dan artikel di sini"
+
+[browse_articles]
+other = "Jelajahi Artikel"
+
+[about_us]
+other = "Tentang"
+
+# --- Posts list ---
+[list_articles_count]
+other = "Jelajahi kumpulan {{ .Count }} artikel"
+
+[no_posts_title]
+other = "Belum ada artikel"
+
+[no_posts_subtitle]
+other = "Nantikan konten baru segera!"
+
+# --- Search ---
+[search_articles]
+other = "Cari artikel"
+
+[search_placeholder_short]
+other = "Cari artikel..."
+
+[search_placeholder_full]
+other = "Cari artikel... (Ctrl+K)"
+
+[close_search]
+other = "Tutup pencarian"
+
+[search_start_typing]
+other = "Mulai ketik untuk mencari"
+
+[search_hint]
+other = 'Coba kata kunci seperti "hugo", "tailwind", atau "dark mode"'
+
+[search_no_results]
+other = "Tidak ada hasil"
+
+[search_try_different]
+other = "Coba kata kunci lain"
+
+[to_navigate]
+other = "untuk navigasi"
+
+[to_close]
+other = "untuk menutup"
+
+# --- Header / navigation ---
+[search]
+other = "Cari"
+
+[title_search]
+other = "Cari (Ctrl+K)"
+
+[toggle_theme]
+other = "Ganti tema"
+
+[open_menu]
+other = "Buka menu"
+
+# --- Article (single) ---
+[breadcrumb_home]
+other = "Beranda"
+
+[reading_time]
+other = "{{ .Count }} menit baca"
+
+[share_article]
+other = "Bagikan artikel ini"
+
+[back_to_blog]
+other = "Kembali ke Artikel"
+
+[translation_available]
+other = "Artikel ini juga tersedia dalam"
+
+# --- Pagination ---
+[pagination]
+other = "Paginasi"
+
+[previous_page]
+other = "Halaman sebelumnya"
+
+[next_page]
+other = "Halaman berikutnya"
+
+# --- 404 ---
+[not_found_title]
+other = "Halaman Tidak Ditemukan"
+
+[not_found_desc]
+other = "Halaman yang Anda cari tidak ada atau telah dipindahkan. Mari kembali ke jalur yang benar!"
+
+[go_home]
+other = "Ke Beranda"
+
+[popular_pages]
+other = "Atau coba halaman populer berikut:"
+
+[nav_blog]
+other = "Artikel"
+
+[nav_about]
+other = "Tentang"
+
+[nav_tags]
+other = "Tag"
+
+# --- Footer ---
+[quick_links]
+other = "Tautan Cepat"
+
+[connect]
+other = "Terhubung"
+
+[built_with]
+other = "Dibuat dengan"
+
+[built_with_and]
+other = "dan"
+
+# --- Taxonomy ---
+[tag_label]
+other = "Tag"
+
+[category_label]
+other = "Kategori"
+
+[articles_tagged_with]
+other = "{{ .Count }} artikel dengan tag “{{ .Title }}”"
+
+[articles_in_category]
+other = "{{ .Count }} artikel dalam kategori “{{ .Title }}”"
+
+[view_all_tags]
+other = "Lihat semua tag"
+
+[view_all_categories]
+other = "Lihat semua kategori"
+
+[all_tags]
+other = "Semua Tag"
+
+[all_categories]
+other = "Semua Kategori"
+
+[browse_by_tag]
+other = "Jelajahi artikel berdasarkan tag"
+
+[browse_by_category]
+other = "Jelajahi artikel berdasarkan kategori"
+
+# --- Comments ---
+[comments]
+other = "Komentar"
+
+# --- About page ---
+[tech_stack]
+other = "Teknologi"
+
+[get_in_touch]
+other = "Hubungi Saya"
+
+# --- Portfolio page ---
+[status_active]
+other = "Aktif"
+
+[status_archived]
+other = "Diarsipkan"
+
+[status_completed]
+other = "Selesai"
+
+[source_code]
+other = "Kode Sumber"
+
+[live_demo]
+other = "Demo Langsung"
+
+[no_projects]
+other = "Belum ada proyek. Nantikan segera."

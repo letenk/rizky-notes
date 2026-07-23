@@ -30,7 +30,7 @@
     <div class="mb-3 flex flex-wrap gap-2">
       {{ with .Params.tags }}
         {{ range first 3 . }}
-          <a href="/tags/{{ . | urlize }}/" class="inline-block px-2 py-1 text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-navy-700 rounded hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+          <a href="{{ (printf "tags/%s/" (. | urlize)) | relLangURL }}" class="inline-block px-2 py-1 text-xs text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-navy-700 rounded hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
             #{{ . }}
           </a>
         {{ end }}
@@ -54,10 +54,10 @@
       </div>
       <span>·</span>
       <time datetime="{{ .Date.Format "2006-01-02" }}">
-        {{ .Date.Format "Jan 2, 2006" }}
+        {{ .Date | time.Format ":date_medium" }}
       </time>
       <span>·</span>
-      <span>{{ .ReadingTime }} min read</span>
+      <span>{{ i18n "reading_time" (dict "Count" .ReadingTime) }}</span>
     </div>
     
   </div>

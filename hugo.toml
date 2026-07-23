@@ -2,8 +2,9 @@
 # BASIC SETTINGS
 # ===================================
 baseURL = 'https://rizkynotes.com/'
-languageCode = 'id-ID'
-title = "Rizky Note's"
+defaultContentLanguage = 'id'
+defaultContentLanguageInSubdir = false
+# `languageCode` and `title` are moved into [languages] (per-language)
 
 # ===================================
 # BUILD SETTINGS
@@ -24,10 +25,9 @@ title = "Rizky Note's"
     lineNos = false
 
 # ===================================
-# PARAMS (Custom Parameters)
+# GLOBAL PARAMS (language-neutral, shared by both languages)
 # ===================================
 [params]
-  description = 'Rizky Note’s adalah tempat saya menuliskan catatan pribadi seputar Software Engineering, terutama tentang Backend Engineering. Ditulis untuk diri sendiri, dibagikan untuk siapa saja.'
   author = 'Rizky Darmawan'
 
    # Default OG Image (for homepage & pages without image)
@@ -47,28 +47,64 @@ title = "Rizky Note's"
     categoryId = "DIC_kwDOQobt5s4C0Py1"
 
 # ===================================
-# MENU NAVIGATION
+# LANGUAGES (multilingual: ID at root, EN under /en/)
 # ===================================
-[menu]
-  [[menu.main]]
-    name = 'Home'
-    url = '/'
-    weight = 1
+[languages]
+  [languages.id]
+    languageCode      = 'id-ID'
+    languageName      = 'Bahasa Indonesia'
+    languageDirection = 'ltr'
+    contentDir        = 'content'
+    weight            = 1
+    title             = "Rizky Note's"
+    [languages.id.params]
+      description = 'Rizky Note’s adalah tempat saya menuliskan catatan pribadi seputar Software Engineering, terutama tentang Backend Engineering. Ditulis untuk diri sendiri, dibagikan untuk siapa saja.'
+      ogLocale    = 'id_ID'
+    [languages.id.menus]
+      [[languages.id.menus.main]]
+        name    = 'Beranda'
+        pageRef = '/'
+        weight  = 1
+      [[languages.id.menus.main]]
+        name    = 'Artikel'
+        pageRef = '/posts'
+        weight  = 2
+      [[languages.id.menus.main]]
+        name    = 'Portfolio'
+        pageRef = '/portfolio'
+        weight  = 3
+      [[languages.id.menus.main]]
+        name    = 'Tentang'
+        pageRef = '/about'
+        weight  = 4
 
-  [[menu.main]]
-    name = 'Blog'
-    url = '/posts/'
-    weight = 2
-
-  [[menu.main]]
-    name = 'Portfolio'
-    url = '/portfolio/'
-    weight = 3
-
-  [[menu.main]]
-    name = 'About'
-    url = '/about/'
-    weight = 4
+  [languages.en]
+    languageCode      = 'en-US'
+    languageName      = 'English'
+    languageDirection = 'ltr'
+    contentDir        = 'content'
+    weight            = 2
+    title             = "Rizky Note's"
+    [languages.en.params]
+      description = 'Notes on software engineering — mostly backend, Go, and production systems. Written for myself, shared with anyone.'
+      ogLocale    = 'en_US'
+    [languages.en.menus]
+      [[languages.en.menus.main]]
+        name    = 'Home'
+        pageRef = '/'
+        weight  = 1
+      [[languages.en.menus.main]]
+        name    = 'Blog'
+        pageRef = '/posts'
+        weight  = 2
+      [[languages.en.menus.main]]
+        name    = 'Portfolio'
+        pageRef = '/portfolio'
+        weight  = 3
+      [[languages.en.menus.main]]
+        name    = 'About'
+        pageRef = '/about'
+        weight  = 4
 
 # ===================================
 # OUTPUTS

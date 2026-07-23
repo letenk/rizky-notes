@@ -10,9 +10,6 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowToc: true
 ---
-
-> **English Version**: *For English version of this article, please visit: [dev.to](https://dev.to/tentanganak/observability-why-logging-its-important-104b)*
-
 ## Pengantar
 
 Di dunia yang didorong oleh data saat ini, basis data relasional adalah tulang punggung dari aplikasi yang tak terhitung jumlahnya. Mereka menyimpan dan mengelola informasi penting, tetapi kinerja mereka dapat secara signifikan mempengaruhi pengalaman pengguna dan efisiensi sistem secara keseluruhan.
