@@ -10,8 +10,6 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowToc: true
 ---
-> **English Version**: *For English version of this article, please visit: [dev.to](https://dev.to/tentanganak/mastering-enums-in-go-31j2)*
-
 ##### *Gambar oleh [Hans-Peter Gauster](https://unsplash.com/@sloppyperfectionist) dari [Unsplash](https://unsplash.com/photos/stack-of-jigsaw-puzzle-pieces-3y1zF4hIPCg)*
 Mari kita asumsikan bahwa kita sedang membangun API E-commerce yang akan menerima beberapa pesanan, setiap proses pesanan memiliki beberapa status seperti *Pending, Processed, Shipped, Delivered, Cancelled*. Dan aplikasi kita menerima string input yang akan disimpan dalam database, sebagai contoh statusnya adalah Processed, received Process, Processing atau sesuatu yang lain yang menyebabkan inkonsistensi data. Di sini Enum memiliki peran penting.
 

@@ -35,7 +35,7 @@
     <!-- Tech Stack -->
     {{ with .Params.tech_stack }}
       <div class="mb-16">
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-8">Tech Stack</h2>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-8">{{ i18n "tech_stack" }}</h2>
         <div class="space-y-6">
           {{ range . }}
             <div>
@@ -57,7 +57,7 @@
 
     <!-- Social Links / Contact -->
     <div>
-      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Get in Touch</h2>
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">{{ i18n "get_in_touch" }}</h2>
       <div class="flex flex-wrap gap-4">
 
         {{ with .Site.Params.social.github }}

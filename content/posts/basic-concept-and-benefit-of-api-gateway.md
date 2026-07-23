@@ -10,9 +10,6 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowToc: true
 ---
-
-> **English Version**: *For English version of this article, please visit: [dev.to](https://dev.to/tentanganak/connection-pool-in-backend-development-basic-concept-benefits-and-implementation-4bh0)*
-
 ##### Photo by <a href="https://unsplash.com/@soymeraki?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Javier Allegue Barros</a> on <a href="https://unsplash.com/photos/silhouette-of-road-signage-during-golden-hour-C7B-ExXpOIE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
 API Gateway adalah komponen penting dalam arsitektur perangkat lunak modern, terutama dalam sistem yang mengimplementasikan microservices. API Gateway bertindak sebagai gerbang utama untuk menerima semua permintaan API yang masuk. Dengan peran ini, API Gateway menyederhanakan manajemen API dan meningkatkan kinerja dan keamanan sistem secara keseluruhan.

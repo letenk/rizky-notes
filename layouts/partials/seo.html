@@ -14,7 +14,10 @@
 <meta property="og:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
 <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta property="og:site_name" content="{{ .Site.Title }}">
-<meta property="og:locale" content="{{ .Site.LanguageCode }}">
+<meta property="og:locale" content="{{ .Site.Params.ogLocale }}">
+{{ range .Translations }}
+  <meta property="og:locale:alternate" content="{{ .Site.Params.ogLocale }}">
+{{ end }}
 
 {{ with .Params.image }}
   <meta property="og:image" content="{{ . | absURL }}">

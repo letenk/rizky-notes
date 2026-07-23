@@ -2,11 +2,22 @@
 (function() {
   let fuse = null;
   let searchData = [];
-  
+
+  // Per-language config read from the #search-modal data-* attributes
+  function searchConfig() {
+    const modal = document.getElementById('search-modal');
+    return {
+      indexUrl: (modal && modal.dataset.indexUrl) || '/index.json',
+      locale: (modal && modal.dataset.locale) || 'en-US',
+      noResults: (modal && modal.dataset.noResults) || 'No results found',
+      tryDifferent: (modal && modal.dataset.tryDifferent) || 'Try different keywords',
+    };
+  }
+
   // Load search index
   async function loadSearchIndex() {
     try {
-      const response = await fetch('/index.json');
+      const response = await fetch(searchConfig().indexUrl);
       searchData = await response.json();
       
       // Initialize Fuse.js
@@ -76,22 +87,23 @@
     const container = document.getElementById('search-results');
     if (!container) return;
     
+    const cfg = searchConfig();
     if (results.length === 0) {
       container.innerHTML = `
         <div class="text-center py-12 text-gray-500 dark:text-gray-400">
           <svg class="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-          <p class="text-lg font-medium">No results found</p>
-          <p class="text-sm mt-2">Try different keywords</p>
+          <p class="text-lg font-medium">${cfg.noResults}</p>
+          <p class="text-sm mt-2">${cfg.tryDifferent}</p>
         </div>
       `;
       return;
     }
-    
+
     const html = results.map(result => {
       const item = result.item;
-      const date = new Date(item.date).toLocaleDateString('en-US', {
+      const date = new Date(item.date).toLocaleDateString(cfg.locale, {
         year: 'numeric',
         month: 'short',
         day: 'numeric'

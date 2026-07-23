@@ -16,23 +16,23 @@
     </h1>
     
     <h2 class="text-2xl sm:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-4">
-      Page Not Found
+      {{ i18n "not_found_title" }}
     </h2>
-    
+
     <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
-      The page you're looking for doesn't exist or has been moved. Let's get you back on track!
+      {{ i18n "not_found_desc" }}
     </p>
     
     <!-- Action Buttons -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a 
-        href="/" 
+      <a
+        href="{{ "" | relLangURL }}"
         class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-200 hover:scale-105"
       >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-77 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
         </svg>
-        Go Home
+        {{ i18n "go_home" }}
       </a>
       <button 
           onclick="window.openSearch()"
@@ -41,19 +41,19 @@
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
-          Search
+          {{ i18n "search" }}
         </button>
       </div>
       
       <!-- Popular Links -->
       <div class="mt-12">
-        <p class="text-sm text-gray-500 dark:text-gray-500 mb-4">Or try these popular pages:</p>
+        <p class="text-sm text-gray-500 dark:text-gray-500 mb-4">{{ i18n "popular_pages" }}</p>
         <div class="flex flex-wrap gap-3 justify-center">
-          <a href="/posts/" class="text-blue-600 dark:text-blue-400 hover:underline">Blog</a>
+          <a href="{{ "posts/" | relLangURL }}" class="text-blue-600 dark:text-blue-400 hover:underline">{{ i18n "nav_blog" }}</a>
           <span class="text-gray-400">•</span>
-          <a href="/about/" class="text-blue-600 dark:text-blue-400 hover:underline">About</a>
+          <a href="{{ "about/" | relLangURL }}" class="text-blue-600 dark:text-blue-400 hover:underline">{{ i18n "nav_about" }}</a>
           <span class="text-gray-400">•</span>
-          <a href="/tags/" class="text-blue-600 dark:text-blue-400 hover:underline">Tags</a>
+          <a href="{{ "tags/" | relLangURL }}" class="text-blue-600 dark:text-blue-400 hover:underline">{{ i18n "nav_tags" }}</a>
         </div>
       </div>
   </div>

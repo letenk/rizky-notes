@@ -6,10 +6,10 @@
     <!-- Breadcrumb -->
     <nav class="mb-8 text-sm">
       <ol class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-        <li><a href="/" class="hover:text-blue-500 transition-colors">Home</a></li>
+        <li><a href="{{ .Site.Home.RelPermalink }}" class="hover:text-blue-500 transition-colors">{{ i18n "breadcrumb_home" }}</a></li>
         <li>/</li>
         {{ if .Section }}
-          <li><a href="/{{ .Section }}/" class="hover:text-blue-500 transition-colors capitalize">{{ .Section }}</a></li>
+          <li><a href="{{ (printf "%s/" .Section) | relLangURL }}" class="hover:text-blue-500 transition-colors capitalize">{{ .Section }}</a></li>
           <li>/</li>
         {{ end }}
         <li class="text-gray-900 dark:text-white truncate">{{ .Title }}</li>
@@ -52,7 +52,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
           </svg>
           <time datetime="{{ .Date.Format "2006-01-02" }}">
-            {{ .Date.Format "January 2, 2006" }}
+            {{ .Date | time.Format ":date_long" }}
           </time>
         </div>
         
@@ -61,7 +61,7 @@
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-          <span>{{ .ReadingTime }} min read</span>
+          <span>{{ i18n "reading_time" (dict "Count" .ReadingTime) }}</span>
         </div>
         
       </div>
@@ -70,7 +70,7 @@
       {{ with .Params.tags }}
         <div class="mt-6 flex flex-wrap gap-2">
           {{ range . }}
-            <a href="/tags/{{ . | urlize }}/" class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-navy-800 rounded-full hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <a href="{{ (printf "tags/%s/" (. | urlize)) | relLangURL }}" class="px-3 py-1 text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-navy-800 rounded-full hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
               #{{ . }}
             </a>
           {{ end }}
@@ -92,6 +92,19 @@
       </div>
     {{ end }}
 
+    <!-- Translation Notice -->
+    {{ with .Translations }}
+      <div class="mb-8 flex flex-wrap items-center gap-2 rounded-xl border border-blue-200 dark:border-blue-900/50 bg-blue-50 dark:bg-blue-900/20 px-4 py-3 text-sm text-gray-700 dark:text-gray-300">
+        <svg class="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+        </svg>
+        <span>{{ i18n "translation_available" }}</span>
+        {{ range . }}
+          <a href="{{ .RelPermalink }}" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">{{ .Language.LanguageName }}</a>
+        {{ end }}
+      </div>
+    {{ end }}
+
     <!-- Article Content -->
     <div class="prose prose-lg dark:prose-invert max-w-none
                 prose-headings:text-gray-900 dark:prose-headings:text-white
@@ -110,7 +123,7 @@
       
       <!-- Share Buttons -->
       <div class="mb-8">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Share this article</h3>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{{ i18n "share_article" }}</h3>
         <div class="flex gap-3">
           
           <!-- Twitter -->
@@ -141,11 +154,11 @@
       {{ partial "comments.html" . }}
 
       <!-- Back to Blog -->
-      <a href="/posts/" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors">
+      <a href="{{ "posts/" | relLangURL }}" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
         </svg>
-        Back to Blog
+        {{ i18n "back_to_blog" }}
       </a>
       
     </footer>

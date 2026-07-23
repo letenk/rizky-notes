@@ -1,0 +1,204 @@
+# =====================================================
+# English UI strings — rizkynotes.com
+# =====================================================
+
+# --- Homepage ---
+[hero_greeting]
+other = "Hi, I'm"
+
+[latest_articles]
+other = "Latest Articles"
+
+[view_all]
+other = "View All"
+
+[cta_title]
+other = "Ready to Learn More?"
+
+[cta_subtitle]
+other = "Explore our collection of tutorials and articles"
+
+[browse_articles]
+other = "Browse Articles"
+
+[about_us]
+other = "About Us"
+
+# --- Posts list ---
+[list_articles_count]
+one   = "Explore our collection of {{ .Count }} article"
+other = "Explore our collection of {{ .Count }} articles"
+
+[no_posts_title]
+other = "No posts yet"
+
+[no_posts_subtitle]
+other = "Check back soon for new content!"
+
+# --- Search ---
+[search_articles]
+other = "Search articles"
+
+[search_placeholder_short]
+other = "Search articles..."
+
+[search_placeholder_full]
+other = "Search articles... (Ctrl+K)"
+
+[close_search]
+other = "Close search"
+
+[search_start_typing]
+other = "Start typing to search"
+
+[search_hint]
+other = 'Try keywords like "hugo", "tailwind", or "dark mode"'
+
+[search_no_results]
+other = "No results found"
+
+[search_try_different]
+other = "Try different keywords"
+
+[to_navigate]
+other = "to navigate"
+
+[to_close]
+other = "to close"
+
+# --- Header / navigation ---
+[search]
+other = "Search"
+
+[title_search]
+other = "Search (Ctrl+K)"
+
+[toggle_theme]
+other = "Toggle theme"
+
+[open_menu]
+other = "Open menu"
+
+# --- Article (single) ---
+[breadcrumb_home]
+other = "Home"
+
+[reading_time]
+other = "{{ .Count }} min read"
+
+[share_article]
+other = "Share this article"
+
+[back_to_blog]
+other = "Back to Blog"
+
+[translation_available]
+other = "This article is also available in"
+
+# --- Pagination ---
+[pagination]
+other = "Pagination"
+
+[previous_page]
+other = "Previous page"
+
+[next_page]
+other = "Next page"
+
+# --- 404 ---
+[not_found_title]
+other = "Page Not Found"
+
+[not_found_desc]
+other = "The page you're looking for doesn't exist or has been moved. Let's get you back on track!"
+
+[go_home]
+other = "Go Home"
+
+[popular_pages]
+other = "Or try these popular pages:"
+
+[nav_blog]
+other = "Blog"
+
+[nav_about]
+other = "About"
+
+[nav_tags]
+other = "Tags"
+
+# --- Footer ---
+[quick_links]
+other = "Quick Links"
+
+[connect]
+other = "Connect"
+
+[built_with]
+other = "Built with"
+
+[built_with_and]
+other = "and"
+
+# --- Taxonomy ---
+[tag_label]
+other = "Tag"
+
+[category_label]
+other = "Category"
+
+[articles_tagged_with]
+one   = "{{ .Count }} article tagged with “{{ .Title }}”"
+other = "{{ .Count }} articles tagged with “{{ .Title }}”"
+
+[articles_in_category]
+one   = "{{ .Count }} article in “{{ .Title }}”"
+other = "{{ .Count }} articles in “{{ .Title }}”"
+
+[view_all_tags]
+other = "View all tags"
+
+[view_all_categories]
+other = "View all categories"
+
+[all_tags]
+other = "All Tags"
+
+[all_categories]
+other = "All Categories"
+
+[browse_by_tag]
+other = "Browse articles by tag"
+
+[browse_by_category]
+other = "Browse articles by category"
+
+# --- Comments ---
+[comments]
+other = "Comments"
+
+# --- About page ---
+[tech_stack]
+other = "Tech Stack"
+
+[get_in_touch]
+other = "Get in Touch"
+
+# --- Portfolio page ---
+[status_active]
+other = "Active"
+
+[status_archived]
+other = "Archived"
+
+[status_completed]
+other = "Completed"
+
+[source_code]
+other = "Source Code"
+
+[live_demo]
+other = "Live Demo"
+
+[no_projects]
+other = "No projects yet. Check back soon."

@@ -10,9 +10,6 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowToc: true
 ---
-
-> **English Version**: *For English version of this article, please visit: [dev.to](https://dev.to/tentanganak/observability-why-logging-its-important-104b)*
-
 Dalam era digital yang semakin kompleks, observabilitas adalah kunci utama dalam mengelola sistem perangkat lunak modern. Salah satu pilar terpenting dari observabilitas adalah **logging**. Mari kita jelajahi mengapa logging sangat penting dan bagaimana cara memanfaatkannya secara optimal.
 
 ## Apa itu Logging?

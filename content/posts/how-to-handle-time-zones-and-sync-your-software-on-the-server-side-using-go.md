@@ -10,9 +10,6 @@ ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowToc: true
 ---
-
-> **English Version**: *For English version of this article, please visit: [dev.to](https://dev.to/tentanganak/how-to-handle-time-zones-and-sync-your-software-on-the-server-side-using-go-16ip)*
-
 Ketika aplikasi Anda mulai berkembang dalam skala besar, peningkatan pengguna akan bertambah. Yang sangat mungkin terjadi adalah lokasi pengguna tidak hanya berada di area yang sama, bisa saja berada di area lain yang memiliki zona waktu yang berbeda. Jadi sebagai developer Backend, hal-hal yang berkaitan dengan penanganan perbedaan zona waktu sangat penting untuk dipikirkan.
 
 Saya baru-baru ini menghadapi masalah yang melibatkan zona waktu. Mari kita jujur, berurusan dengan tanggal dan waktu adalah salah satu area paling rumit yang harus ditangani manusia. Dan ini merupakan kesempatan bagi saya untuk belajar bagaimana menangani tanggal dan waktu dengan benar di sisi server.
