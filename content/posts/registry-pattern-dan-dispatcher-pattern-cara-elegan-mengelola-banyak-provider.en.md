@@ -12,6 +12,8 @@ ShowToc: true
 slug: "registry-pattern-clean-way-to-manage-multiple-providers"
 ---
 
+##### Photo by <a href="https://unsplash.com/@olenichek?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Daria Glakteeva</a> on <a href="https://unsplash.com/photos/a-close-up-of-a-puzzle-board-with-many-pieces-missing-sKnQ7he3flU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
 A while back I worked on a project that integrated AI with two providers at once: OpenCode and Anthropic.
 Before I start writing code, I like to sit with the problem for a bit and think through what's likely to come up down the road. I also just like clean, readable code.
 The question arises:

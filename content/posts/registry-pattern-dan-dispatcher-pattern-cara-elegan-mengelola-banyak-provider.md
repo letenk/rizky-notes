@@ -11,6 +11,8 @@ ShowPostNavLinks: true
 ShowToc: true
 ---
 
+##### Photo by <a href="https://unsplash.com/@olenichek?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Daria Glakteeva</a> on <a href="https://unsplash.com/photos/a-close-up-of-a-puzzle-board-with-many-pieces-missing-sKnQ7he3flU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
 Beberapa waktu lalu saya mengerjakan project yang mengintegrasikan AI dengan dua provider sekaligus, yaitu OpenCode dan Anthropic.
 Hal yang biasa saya lakukan sebelum mulai menulis kode adalah memikirkan dan membayangkan kira-kira kode atau case apa yang akan terjadi ke depannya. Saya juga suka dengan kode yang bersih dan mudah dibaca.
 Muncul pertanyaan:
