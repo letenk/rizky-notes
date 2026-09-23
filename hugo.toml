@@ -39,6 +39,10 @@ defaultContentLanguageInSubdir = false
     github = 'https://github.com/letenk'
     linkedin = 'https://www.linkedin.com/in/rizkydarmawan/'
 
+  # Contact (Service page CTA)
+  [params.contact]
+    whatsapp = "628xxxxxxxxxx" # TODO: ganti dengan nomor WhatsApp asli sebelum deploy
+
   # Comments - Giscus
   [params.giscus]
     repo       = "letenk/rizky-notes"
@@ -77,6 +81,10 @@ defaultContentLanguageInSubdir = false
         name    = 'Tentang'
         pageRef = '/about'
         weight  = 4
+      [[languages.id.menus.main]]
+        name    = 'Layanan'
+        pageRef = '/service'
+        weight  = 5
 
   [languages.en]
     languageCode      = 'en-US'
@@ -105,6 +113,10 @@ defaultContentLanguageInSubdir = false
         name    = 'About'
         pageRef = '/about'
         weight  = 4
+      [[languages.en.menus.main]]
+        name    = 'Services'
+        pageRef = '/service'
+        weight  = 5
 
 # ===================================
 # OUTPUTS

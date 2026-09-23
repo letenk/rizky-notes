@@ -202,3 +202,29 @@ other = "Live Demo"
 
 [no_projects]
 other = "No projects yet. Check back soon."
+
+# --- Service page ---
+[whats_included]
+other = "What you get:"
+
+[service_cta_title]
+other = "Interested in Working Together?"
+
+[service_cta_subtitle]
+other = "Tell me about your project — let's figure out the right solution together."
+
+[whatsapp_contact]
+other = "Chat on WhatsApp"
+
+[no_services]
+other = "No services available right now."
+
+# --- Article promo card ---
+[promo_label]
+other = "Need help with this?"
+
+[view_service]
+other = "View Service"
+
+[dismiss]
+other = "Dismiss"

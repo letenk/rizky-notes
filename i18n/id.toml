@@ -199,3 +199,29 @@ other = "Demo Langsung"
 
 [no_projects]
 other = "Belum ada proyek. Nantikan segera."
+
+# --- Service page ---
+[whats_included]
+other = "Yang Anda dapatkan:"
+
+[service_cta_title]
+other = "Tertarik Bekerja Sama?"
+
+[service_cta_subtitle]
+other = "Ceritakan kebutuhan project Anda, mari kita diskusikan solusi yang paling pas."
+
+[whatsapp_contact]
+other = "Chat via WhatsApp"
+
+[no_services]
+other = "Belum ada layanan yang ditawarkan saat ini."
+
+# --- Article promo card ---
+[promo_label]
+other = "Butuh bantuan ini?"
+
+[view_service]
+other = "Lihat Layanan"
+
+[dismiss]
+other = "Tutup"
