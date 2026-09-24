@@ -1,0 +1,16 @@
+{{/* Sidebar kanan: 2 artikel lain, dipilih random di browser (lihat assets/js/related-articles.js). Hanya tampil dari breakpoint lg ke atas. */}}
+<aside class="hidden lg:block lg:col-start-3 lg:row-start-1">
+  <div class="sticky top-24">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+      {{ i18n "related_articles" }}
+    </p>
+    <div
+      id="related-articles-list"
+      class="space-y-4"
+      data-index-url="{{ "index.json" | relLangURL }}"
+      data-locale="{{ .Site.Language.LanguageCode }}"
+      data-current="{{ .Permalink }}"
+      data-reading-time-template="{{ i18n "reading_time" (dict "Count" "__COUNT__") }}"
+    ></div>
+  </div>
+</aside>
