@@ -10,7 +10,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-gray-900 dark:text-white;
+    @apply font-bold text-gray-900 dark:text-white scroll-mt-24;
   }
 
   a {
@@ -56,5 +56,30 @@
 }
 
 @layer components {
-    /* Kita akan tambahkan custom components di sini nanti */
+  /* Sidebar TOC di halaman artikel */
+  .toc-nav {
+    @apply text-sm;
+  }
+
+  .toc-nav ul {
+    @apply list-none m-0 p-0 space-y-1;
+  }
+
+  .toc-nav li > ul {
+    @apply mt-1 ml-3 space-y-1 border-l border-gray-200 dark:border-navy-700 pl-3;
+  }
+
+  /* Hugo menyisakan <li> kosong bersarang untuk heading yang di-skip
+     (mis. H5 caption foto yang berada sebelum heading H2 pertama). */
+  .toc-nav li:not(:has(a)) {
+    @apply hidden;
+  }
+
+  .toc-nav a {
+    @apply block py-1 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 leading-snug transition-colors duration-150;
+  }
+
+  .toc-nav a.toc-active {
+    @apply text-blue-600 dark:text-blue-400 font-semibold;
+  }
 }

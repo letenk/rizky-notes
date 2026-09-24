@@ -1,8 +1,13 @@
 {{ define "main" }}
 <article class="bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-navy-900 dark:via-navy-800 dark:to-navy-900 min-h-screen py-12 transition-colors duration-300">
   
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+  <div class="max-w-4xl lg:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 lg:grid lg:grid-cols-[240px_1fr_240px] lg:gap-8">
+
+    <!-- TOC Sidebar (desktop/laptop only) -->
+    {{ partial "toc.html" . }}
+
+    <div class="min-w-0 lg:col-start-2 lg:row-start-1">
+
     <!-- Breadcrumb -->
     <nav class="mb-8 text-sm">
       <ol class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
@@ -118,8 +123,10 @@
       {{ .Content }}
     </div>
     
-    <!-- Article Footer -->
-    <footer class="mt-16 pt-8 border-t border-gray-200 dark:border-navy-700">
+    </div>
+
+    <!-- Article Footer (kolom tengah saja, di luar area sticky TOC/artikel lain) -->
+    <footer class="lg:col-start-2 lg:row-start-2 mt-16 pt-8 border-t border-gray-200 dark:border-navy-700">
       
       <!-- Share Buttons -->
       <div class="mb-8">
@@ -162,8 +169,27 @@
       </a>
       
     </footer>
-    
+
+    <!-- Related Articles Sidebar (desktop/laptop only) -->
+    {{ partial "related-articles.html" . }}
+
   </div>
-  
+
 </article>
+
+{{/* Scroll-spy untuk TOC sidebar */}}
+{{ if and (default true .Params.ShowToc) (gt (len .Fragments.Headings) 0) }}
+  {{ $tocJS := resources.Get "js/toc.js" }}
+  {{ if $tocJS }}
+    {{ $tocJS = $tocJS | minify }}
+    <script src="{{ $tocJS.Permalink }}"></script>
+  {{ end }}
+{{ end }}
+
+{{/* Sidebar artikel lain (random) */}}
+{{ $relatedJS := resources.Get "js/related-articles.js" }}
+{{ if $relatedJS }}
+  {{ $relatedJS = $relatedJS | minify }}
+  <script src="{{ $relatedJS.Permalink }}"></script>
+{{ end }}
 {{ end }}

@@ -1,0 +1,13 @@
+{{/* Sidebar TOC — hanya tampil dari breakpoint lg ke atas (desktop/laptop). */}}
+{{ if and (default true .Params.ShowToc) (gt (len .Fragments.Headings) 0) }}
+<aside class="hidden lg:block lg:col-start-1 lg:row-start-1">
+  <div class="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+      {{ i18n "table_of_contents" }}
+    </p>
+    <nav id="toc-nav" aria-label="{{ i18n "table_of_contents" }}" class="toc-nav">
+      {{ .TableOfContents }}
+    </nav>
+  </div>
+</aside>
+{{ end }}

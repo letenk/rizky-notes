@@ -24,6 +24,13 @@ defaultContentLanguageInSubdir = false
     style = 'monokai' # ref: https://xyproto.github.io/splash/docs/
     lineNos = false
 
+  # H1 = judul artikel (di luar body), H5/H6 dipakai untuk caption foto,
+  # jadi TOC cukup H2-H4 saja.
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
+
 # ===================================
 # GLOBAL PARAMS (language-neutral, shared by both languages)
 # ===================================

@@ -94,6 +94,12 @@ other = "Kembali ke Artikel"
 [translation_available]
 other = "Artikel ini juga tersedia dalam"
 
+[table_of_contents]
+other = "Daftar Isi"
+
+[related_articles]
+other = "Artikel Lain"
+
 # --- Pagination ---
 [pagination]
 other = "Paginasi"
