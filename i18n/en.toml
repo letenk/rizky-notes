@@ -101,6 +101,15 @@ other = "Table of Contents"
 [related_articles]
 other = "More Articles"
 
+[copy_code]
+other = "Copy"
+
+[copied_code]
+other = "Copied!"
+
+[back_to_citation]
+other = "Back to text"
+
 # --- Pagination ---
 [pagination]
 other = "Pagination"

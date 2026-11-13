@@ -186,6 +186,15 @@
   {{ end }}
 {{ end }}
 
+{{/* Tombol copy code block (flag di-set oleh render-codeblock.html) */}}
+{{ if .Store.Get "hasCodeBlock" }}
+  {{ $copyJS := resources.Get "js/code-copy.js" }}
+  {{ if $copyJS }}
+    {{ $copyJS = $copyJS | minify }}
+    <script src="{{ $copyJS.Permalink }}"></script>
+  {{ end }}
+{{ end }}
+
 {{/* Sidebar artikel lain (random) */}}
 {{ $relatedJS := resources.Get "js/related-articles.js" }}
 {{ if $relatedJS }}

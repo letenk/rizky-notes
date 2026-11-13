@@ -100,6 +100,15 @@ other = "Daftar Isi"
 [related_articles]
 other = "Artikel Lain"
 
+[copy_code]
+other = "Salin"
+
+[copied_code]
+other = "Tersalin!"
+
+[back_to_citation]
+other = "Kembali ke teks"
+
 # --- Pagination ---
 [pagination]
 other = "Paginasi"

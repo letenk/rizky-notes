@@ -1,0 +1,16 @@
+{{- /*
+  Sitasi ke Daftar bacaan. Pemakaian: {{< cite "openai-reasoning" >}}
+  `id` harus ada di frontmatter `references`. Nomor = urutan di daftar tersebut.
+*/ -}}
+{{- $id := .Get 0 -}}
+{{- $n := 0 -}}
+{{- $ref := dict -}}
+{{- range $i, $r := .Page.Params.references -}}
+  {{- if eq (index $r "id") $id -}}{{- $n = add $i 1 -}}{{- $ref = $r -}}{{- end -}}
+{{- end -}}
+{{- if eq $n 0 -}}
+  {{- errorf "cite: id %q tidak ditemukan di frontmatter `references` — %s" $id .Position -}}
+{{- end -}}
+{{- $key := printf "cite-count-%s" $id -}}
+{{- .Page.Store.Add $key 1 -}}
+<sup class="cite" id="cite-{{ $id }}-{{ .Page.Store.Get $key }}"><a href="#ref-{{ $id }}" title="{{ index $ref "title" }}">[{{ $n }}]</a></sup>
