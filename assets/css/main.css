@@ -82,4 +82,52 @@
   .toc-nav a.toc-active {
     @apply text-blue-600 dark:text-blue-400 font-semibold;
   }
+
+  /* Code block + tombol copy (render-codeblock.html, js/code-copy.js) */
+  .code-block {
+    @apply relative;
+  }
+
+  .code-copy-btn {
+    @apply absolute top-2 right-2 z-10 rounded-md border border-gray-600 bg-gray-800/90 px-2 py-1
+           text-xs font-medium text-gray-300 opacity-0 transition-opacity duration-150
+           hover:bg-gray-700 hover:text-white focus-visible:opacity-100;
+  }
+
+  .code-block:hover .code-copy-btn,
+  .code-copy-btn.is-copied {
+    @apply opacity-100;
+  }
+
+  .code-copy-btn.is-copied {
+    @apply border-green-500 text-green-400;
+  }
+
+  /* Perangkat sentuh tidak punya hover, jadi tombol selalu tampil */
+  @media (hover: none) {
+    .code-copy-btn {
+      @apply opacity-100;
+    }
+  }
+
+  /* Sitasi [n] ke Daftar bacaan (shortcodes cite.html & references.html) */
+  .cite {
+    @apply ml-0.5 scroll-mt-24;
+  }
+
+  .cite a {
+    @apply font-medium;
+  }
+
+  .references li {
+    @apply scroll-mt-24 rounded-md px-1 -mx-1 transition-colors duration-300;
+  }
+
+  .references li:target {
+    @apply bg-blue-50 dark:bg-blue-900/20;
+  }
+
+  .ref-backlink {
+    @apply ml-1 text-gray-400 dark:text-gray-500;
+  }
 }

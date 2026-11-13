@@ -1,0 +1,10 @@
+{{- /* Code block + tombol copy. Teks yang disalin diambil dari <code> oleh assets/js/code-copy.js */ -}}
+{{- $result := transform.HighlightCodeBlock . -}}
+{{- .Page.Store.Set "hasCodeBlock" true -}}
+<div class="code-block">
+  <button type="button" class="code-copy-btn"
+          data-label="{{ i18n "copy_code" }}"
+          data-copied="{{ i18n "copied_code" }}"
+          aria-label="{{ i18n "copy_code" }}">{{ i18n "copy_code" }}</button>
+  {{ $result.Wrapped }}
+</div>

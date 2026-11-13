@@ -9,6 +9,22 @@ ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowToc: true
+references:
+  - id: openai-tokens
+    title: "Understanding and counting tokens"
+    url: "https://help.openai.com/en/articles/4936856-understanding-and-counting-tokens"
+  - id: openai-reasoning
+    title: "OpenAI Reasoning Models"
+    url: "https://developers.openai.com/api/docs/guides/reasoning"
+  - id: tiktoken
+    title: "Tiktoken"
+    url: "https://github.com/openai/tiktoken"
+  - id: openai-pricing
+    title: "OpenAI Pricing"
+    url: "https://developers.openai.com/api/docs/pricing"
+  - id: claude-thinking
+    title: "Claude Extended Thinking"
+    url: "https://platform.claude.com/docs/en/build-with-claude/extended-thinking"
 slug: "understanding-tokens-in-llms"
 ---
 
@@ -107,7 +123,7 @@ So, let's answer those three questions:
 
 The lesson here: *longer text doesn't automatically mean more tokens.* What matters is whether those chunks of text already exist in the vocabulary. The Indonesian words `adalah` ("am/is") and `seorang` ("a", for a person) show up often enough in training data that the GPT-5.x tokenizer, with its large vocabulary, stores each of them as a single token. Older tokenizers with smaller vocabularies tend to split non-English words into more pieces. You can try this yourself by switching to the **GPT-3 (legacy)** tab on OpenAI's tokenizer page.
 
-But remember, these results don't hold universally. In general, English text is still the most efficient. [OpenAI's rough rule of thumb](https://help.openai.com/en/articles/4936856-understanding-and-counting-tokens) is that 1 token ≈ 4 characters, or about ¾ of a word, for English text, and non-English text often has a higher token-to-character ratio. Language, punctuation, code structure, and the [tokenizer](#tokenizer-vocabulary-and-token-ids) all need to be taken into account.
+But remember, these results don't hold universally. In general, English text is still the most efficient. OpenAI's rough rule of thumb{{< cite "openai-tokens" >}} is that 1 token ≈ 4 characters, or about ¾ of a word, for English text, and non-English text often has a higher token-to-character ratio. Language, punctuation, code structure, and the [tokenizer](#tokenizer-vocabulary-and-token-ids) all need to be taken into account.
 
 ## Input tokens and output tokens
 When we send a prompt to an LLM, we're charged for both input and output. As a Backend Engineer who works with APIs a lot, one question immediately popped into my head: "Why is output billed too? Isn't the output just the finished result of whatever happened on the backend? You just send the response back, right?" Alright, let's walk through what I understood after digging into it.
@@ -136,7 +152,7 @@ The answer lies in the **Output Generation** step. The output isn't "already don
 
 Input is different. All the input tokens are available from the start, so they can be processed **all at once, in parallel**. That's why output tokens are usually priced much higher than input tokens.
 
-One thing to note: *reasoning* models produce "thinking" tokens before the final answer. You don't get to see these tokens in full (they're hidden or only shown as a summary), but they're [still billed as output tokens](https://developers.openai.com/api/docs/guides/reasoning).
+One thing to note: *reasoning* models produce "thinking" tokens before the final answer. You don't get to see these tokens in full (they're hidden or only shown as a summary), but they're still billed as output tokens{{< cite "openai-reasoning" >}}.
 
 This also shows that an LLM doesn't always just take a message and immediately reply. What happens inside is of course more complicated than the diagram above, but at least we now have the big picture of how our instructions turn into an answer.
 
@@ -151,7 +167,7 @@ So why do we hit these limits so quickly? The key is that LLMs are *stateless*: 
 The same thing happens in the tool loop from steps 5 and 6. Every time a tool result is sent back to the model, it's a new request carrying the entire previous context plus the tool result. That's why an AI *agent* that calls lots of tools can burn through tokens much faster than a simple Q&A.
 
 ## Calculating API costs
-Let's also figure out how to estimate token costs. Knowing the token count before sending a request lets us estimate the cost and make sure the prompt still fits within the context window. Providers usually offer a library or API for counting tokens, such as [`tiktoken`](https://github.com/openai/tiktoken) from OpenAI. Once we know the token count, we can calculate the cost with this general formula:
+Let's also figure out how to estimate token costs. Knowing the token count before sending a request lets us estimate the cost and make sure the prompt still fits within the context window. Providers usually offer a library or API for counting tokens, such as `tiktoken`{{< cite "tiktoken" >}} from OpenAI. Once we know the token count, we can calculate the cost with this general formula:
 
 ```text
 Cost = (number of tokens ÷ 1,000,000) × price per 1M tokens
@@ -183,8 +199,4 @@ Everything above is my own learning notes. Mistakes in my explanations or unders
 Hope this helps 👋.
 
 ## Further reading
-- [Understanding and counting tokens](https://help.openai.com/en/articles/4936856-understanding-and-counting-tokens)
-- [OpenAI Pricing](https://developers.openai.com/api/docs/pricing)
-- [Tiktoken](https://github.com/openai/tiktoken)
-- [OpenAI Reasoning Models](https://developers.openai.com/api/docs/guides/reasoning)
-- [Claude Extended Thinking](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+{{< references >}}

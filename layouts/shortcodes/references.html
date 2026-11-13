@@ -1,0 +1,18 @@
+{{- /*
+  Render Daftar bacaan dari frontmatter `references` (id, title, url).
+  Pemakaian: tulis heading `## Daftar bacaan` lalu {{< references >}} di bawahnya.
+  Tanda ↩ hanya muncul untuk referensi yang dikutip lewat {{< cite >}}.
+*/ -}}
+{{- $raw := .Page.RawContent -}}
+{{- with .Page.Params.references -}}
+<ol class="references">
+  {{- range . }}
+  {{- $id := index . "id" }}
+  {{- $cited := findRE (printf `\{\{<\s*cite\s+"?%s"?\s*>\}\}` $id) $raw 1 }}
+  <li id="ref-{{ $id }}">
+    <a href="{{ index . "url" }}">{{ index . "title" }}</a>
+    {{- with $cited }} <a href="#cite-{{ $id }}-1" class="ref-backlink" aria-label="{{ i18n "back_to_citation" }}" title="{{ i18n "back_to_citation" }}">↩&#xFE0E;</a>{{ end }}
+  </li>
+  {{- end }}
+</ol>
+{{- end -}}

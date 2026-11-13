@@ -9,6 +9,22 @@ ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowToc: true
+references:
+  - id: openai-tokens
+    title: "Understanding and counting tokens"
+    url: "https://help.openai.com/en/articles/4936856-understanding-and-counting-tokens"
+  - id: openai-reasoning
+    title: "OpenAI Reasoning Models"
+    url: "https://developers.openai.com/api/docs/guides/reasoning"
+  - id: tiktoken
+    title: "Tiktoken"
+    url: "https://github.com/openai/tiktoken"
+  - id: openai-pricing
+    title: "OpenAI Pricing"
+    url: "https://developers.openai.com/api/docs/pricing"
+  - id: claude-thinking
+    title: "Claude Extended Thinking"
+    url: "https://platform.claude.com/docs/en/build-with-claude/extended-thinking"
 slug: "memahami-token-pada-llm"
 ---
 
@@ -107,7 +123,7 @@ Nah, mari kita jawab ketiga pertanyaan tadi:
 
 Dari sini kita bisa ambil pelajaran: *teks yang lebih panjang tidak otomatis menghasilkan lebih banyak token.* Yang menentukan adalah apakah potongan teks tersebut sudah ada di vocabulary. Kata `adalah` dan `seorang` cukup sering muncul di data latih sehingga tokenizer GPT-5.x yang vocabulary-nya besar menyimpannya sebagai satu token utuh. Di tokenizer lama dengan vocabulary yang lebih kecil, kata-kata non-Inggris lebih sering dipecah menjadi beberapa token. Kamu bisa mencobanya sendiri dengan berpindah ke tab **GPT-3 (legacy)** di halaman tokenizer OpenAI.
 
-Tapi ingat, hasil eksperimen ini tidak berlaku universal ya. Secara umum, teks bahasa Inggris masih yang paling efisien. [OpenAI memberi patokan kasar](https://help.openai.com/en/articles/4936856-understanding-and-counting-tokens) 1 token ≈ 4 karakter atau sekitar ¾ kata untuk teks bahasa Inggris, dan teks non-Inggris sering kali memiliki rasio token per karakter yang lebih tinggi. Faktor seperti bahasa, tanda baca, struktur kode, dan [tokenizer](#tokenizer-vocabulary-dan-token-id) tetap harus ikut diperhitungkan.
+Tapi ingat, hasil eksperimen ini tidak berlaku universal ya. Secara umum, teks bahasa Inggris masih yang paling efisien. OpenAI memberi patokan kasar{{< cite "openai-tokens" >}} 1 token ≈ 4 karakter atau sekitar ¾ kata untuk teks bahasa Inggris, dan teks non-Inggris sering kali memiliki rasio token per karakter yang lebih tinggi. Faktor seperti bahasa, tanda baca, struktur kode, dan [tokenizer](#tokenizer-vocabulary-dan-token-id) tetap harus ikut diperhitungkan.
 
 ## Input tokens dan output tokens
 Ketika kita mengirim prompt ke LLM, ada biaya input dan output yang dihitung. Sebagai Backend Engineer yang biasa mengurus API, langsung terbersit pertanyaan di kepala saya: "Kenapa output juga dihitung sebagai biaya ya? Bukannya output itu hasil proses di backend yang sudah jadi, tinggal lempar response saja?" Oke, mari kita bahas satu per satu hal yang saya pahami setelah mempelajarinya.
@@ -136,7 +152,7 @@ Jawabannya ada di tahap **Output Generation**. Output tidak "sudah jadi lalu tin
 
 Berbeda dengan input, seluruh token input sudah tersedia sejak awal sehingga bisa diproses **sekaligus secara paralel**. Karena itulah harga output per token biasanya jauh lebih mahal dibandingkan input.
 
-Perlu diingat juga, pada model *reasoning* ada token "berpikir" yang dihasilkan sebelum jawaban akhir. Token ini tidak ditampilkan secara utuh ke kita (disembunyikan atau hanya diberikan ringkasannya), tapi [tetap dihitung sebagai output token](https://developers.openai.com/api/docs/guides/reasoning).
+Perlu diingat juga, pada model *reasoning* ada token "berpikir" yang dihasilkan sebelum jawaban akhir. Token ini tidak ditampilkan secara utuh ke kita (disembunyikan atau hanya diberikan ringkasannya), tapi tetap dihitung sebagai output token{{< cite "openai-reasoning" >}}.
 
 Dari penjelasan di atas kita juga mendapatkan pemahaman kalau LLM tidak selalu menerima pesan lalu langsung menjawab. Proses di dalamnya tentu lebih rumit dari diagram di atas, tapi setidaknya kita punya gambaran besar bagaimana instruksi yang kita kirim bisa menghasilkan jawaban.
 
@@ -151,7 +167,7 @@ Lalu kenapa batas tersebut cepat tercapai? Kuncinya, LLM bersifat *stateless*: m
 Hal yang sama terjadi pada siklus tool di tahap 5 dan 6. Setiap kali hasil tool dikirim kembali ke model, itu adalah request baru yang membawa seluruh konteks sebelumnya ditambah hasil tool. Inilah alasan AI *agent* yang memanggil banyak tool bisa menghabiskan token jauh lebih cepat daripada tanya-jawab biasa.
 
 ## Menghitung biaya API
-Kita juga akan mencari tahu bagaimana simulasi menghitung biaya token. Dengan mengetahui jumlah token sebelum mengirim request, kita bisa memperkirakan biaya dan memastikan prompt kita masih muat di dalam context window. Biasanya setiap provider menyediakan library atau API untuk menghitung jumlah token, misalnya [`tiktoken`](https://github.com/openai/tiktoken) dari OpenAI. Setelah jumlah tokennya diketahui, biayanya bisa kita hitung dengan rumus umum berikut:
+Kita juga akan mencari tahu bagaimana simulasi menghitung biaya token. Dengan mengetahui jumlah token sebelum mengirim request, kita bisa memperkirakan biaya dan memastikan prompt kita masih muat di dalam context window. Biasanya setiap provider menyediakan library atau API untuk menghitung jumlah token, misalnya `tiktoken`{{< cite "tiktoken" >}} dari OpenAI. Setelah jumlah tokennya diketahui, biayanya bisa kita hitung dengan rumus umum berikut:
 
 ```text
 Biaya = (jumlah token ÷ 1.000.000) × harga per 1 juta token
@@ -182,8 +198,4 @@ Dengan memahami apa itu token, bagaimana tokenizer mengubah teks biasa menjadi t
 Pembahasan di atas adalah catatan pembelajaran saya pribadi. Kesalahan penjelasan dan pemahaman bisa saja terjadi, jadi jika kamu memiliki tambahan atau koreksi, mari kita diskusikan di kolom komentar untuk memperkuat pemahaman kita bersama. Semoga membantu 👋.
 
 ## Daftar bacaan
-- [Understanding and counting tokens](https://help.openai.com/en/articles/4936856-understanding-and-counting-tokens)
-- [OpenAI Pricing](https://developers.openai.com/api/docs/pricing)
-- [Tiktoken](https://github.com/openai/tiktoken)
-- [OpenAI Reasoning Models](https://developers.openai.com/api/docs/guides/reasoning)
-- [Claude Extended Thinking](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+{{< references >}}
